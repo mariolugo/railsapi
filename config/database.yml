@@ -1,0 +1,20 @@
+development:
+   adapter: mysql
+   database: drchapp
+   username: benitocamela
+   password: fuckyeah
+   host: localhost
+
+test:
+   adapter: mysql
+   database: drchapp_test
+   username: benitocamela
+   password: fuckyeah
+   host: localhost
+
+production:
+   adapter: mysql
+   database: library_production
+   username: root
+   password: [password]
+   host: localhost

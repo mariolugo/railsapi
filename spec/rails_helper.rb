@@ -5,7 +5,8 @@ require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'spec_helper'
 require 'rspec/rails'
-
+require File.expand_path("../../config/environment", __FILE__)
+require 'rspec/autorun'
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
     # Choose a test framework:

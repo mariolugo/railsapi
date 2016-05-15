@@ -43,6 +43,12 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
+# #Including to test requests
+#   config.include Request::JsonHelpers, :type => :controller
+#   config.include Request::HeadersHelpers, :type => :controller
+#   config.include Request::JsonHelpers, :type => :controller
+#   config.include Request::HeadersHelpers, :type => :controller
+#   config.include Devise::TestHelpers, :type => :controller
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
 =begin

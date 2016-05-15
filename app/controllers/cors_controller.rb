@@ -1,0 +1,2 @@
+class CorsController < ApplicationController
+end

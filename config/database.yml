@@ -1,13 +1,13 @@
 development:
    adapter: mysql
-   database: drchapp
+   database: ingsoft
    username: benitocamela
    password: fuckyeah
    host: localhost
 
 test:
    adapter: mysql
-   database: drchapp_test
+   database: ingsoft_test
    username: benitocamela
    password: fuckyeah
    host: localhost

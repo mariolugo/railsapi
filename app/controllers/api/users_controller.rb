@@ -1,6 +1,11 @@
-class Api::UsersController < ApplicationController
+class Api::UsersController < Api::CorsController
   respond_to :json
-
+  include ActionController::MimeResponds
+  include ActionController::Cookies
+  include ActionController::ImplicitRender
+  
+  
+  skip_before_filter :verify_authenticity_token
   def show
     respond_with User.find(params[:id])
   end

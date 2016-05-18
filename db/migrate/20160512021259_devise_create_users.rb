@@ -3,9 +3,9 @@ class DeviseCreateUsers < ActiveRecord::Migration
     create_table :users do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
-      t.string :fistName, default: ""
+      t.string :firstName, default: ""
       t.string :lastName, default: ""
-      t.integer :cellphone, default: 0
+      t.integer :cellphone, default: 0, :limit => 5 
       t.string :encrypted_password, null: false, default: ""
 
       ## Recoverable
@@ -21,6 +21,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.datetime :last_sign_in_at
       t.string   :current_sign_in_ip
       t.string   :last_sign_in_ip
+      t.integer :comite_id
 
       ## Confirmable
       # t.string   :confirmation_token

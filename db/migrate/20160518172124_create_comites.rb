@@ -5,7 +5,7 @@ class CreateComites < ActiveRecord::Migration
       t.text :img, :limit => 4294967295 
       t.text :description
       t.string :suburb
-      t.integer :city_id
+      t.string :city
 
       t.timestamps null: false
     end

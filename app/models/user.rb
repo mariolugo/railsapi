@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   validates :auth_token, uniqueness: true
   validates :email, uniqueness: true
+  belongs_to :comite
+  has_one :role
+  has_many :notices
 
   def generate_authentication_token!
     begin

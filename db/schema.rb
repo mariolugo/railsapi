@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160518173252) do
+ActiveRecord::Schema.define(version: 20160518175833) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -24,12 +24,41 @@ ActiveRecord::Schema.define(version: 20160518173252) do
     t.text     "img",         limit: 4294967295
     t.text     "description", limit: 65535
     t.string   "suburb",      limit: 255
-    t.integer  "city_id",     limit: 4
+    t.string   "city",        limit: 255
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
   end
 
-  add_index "comites", ["city_id"], name: "index_comites_on_city_id", using: :btree
+  create_table "notice_types", force: :cascade do |t|
+    t.integer  "type",       limit: 4
+    t.string   "name_type",  limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "notices", force: :cascade do |t|
+    t.string   "title",          limit: 255
+    t.text     "description",    limit: 65535
+    t.string   "address",        limit: 255
+    t.date     "start_time"
+    t.date     "end_time"
+    t.string   "comite_id",      limit: 255
+    t.string   "user_id",        limit: 255
+    t.string   "notice_type_id", limit: 255
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "notices", ["comite_id"], name: "index_notices_on_comite_id", using: :btree
+  add_index "notices", ["notice_type_id"], name: "index_notices_on_notice_type_id", using: :btree
+  add_index "notices", ["user_id"], name: "index_notices_on_user_id", using: :btree
+
+  create_table "roles", force: :cascade do |t|
+    t.integer  "type",       limit: 4
+    t.string   "name_role",  limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -49,11 +78,13 @@ ActiveRecord::Schema.define(version: 20160518173252) do
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
     t.string   "auth_token",             limit: 255, default: ""
+    t.integer  "role_id",                limit: 4
   end
 
   add_index "users", ["auth_token"], name: "index_users_on_auth_token", unique: true, using: :btree
   add_index "users", ["comite_id"], name: "index_users_on_comite_id", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["role_id"], name: "index_users_on_role_id", using: :btree
 
 end
